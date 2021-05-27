@@ -13,7 +13,7 @@ public class Character : MonoBehaviour
     }
     Ray r;
     RaycastHit h;
-    bool isJumping()
+    bool isGrounded()
     {
         r.origin = transform.position;
         r.direction = Vector3.down;
@@ -33,5 +33,21 @@ public class Character : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x,rb.velocity.y+jump_speed, rb.velocity.z);
         }
         rb.velocity = new Vector3(transform.forward.x * speed, rb.velocity.y, transform.forward.z * speed);
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        if (collision.gameObject.layer == 8)
+        {
+            if (isGrounded())
+            {
+                transform.rotation =    collision.transform.rotation;
+            }
+            collision.gameObject.GetComponent<ChangeDirection>().Trigger();
+        }
+        if (collision.gameObject.layer == 9)
+        {
+            collision.gameObject.GetComponent<TeleportDoor>().TriggerDoor(transform);
+        }
     }
 }
