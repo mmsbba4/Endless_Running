@@ -17,7 +17,7 @@ public class Character : MonoBehaviour
     {
         r.origin = transform.position;
         r.direction = Vector3.down;
-        if (Physics.Raycast(r, out h, 0.55f))
+        if (Physics.Raycast(r, out h, 1.1f))
         {
             return true;
         }
@@ -28,6 +28,7 @@ public class Character : MonoBehaviour
     }
     void Update()
     {
+        print(isGrounded());
         if (Input.GetKeyDown(KeyCode.Space))
         {
             rb.velocity = new Vector3(rb.velocity.x,rb.velocity.y+jump_speed, rb.velocity.z);
