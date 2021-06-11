@@ -20,7 +20,6 @@ public class Log : MonoBehaviour
             color_list.Add(i.GetComponent<Image>().color);
         }
         UIRootColor = color_list.ToArray();
-        ShowLog("hihihiihi");
     }
     public void ShowLog(string content)
     {
@@ -32,9 +31,9 @@ public class Log : MonoBehaviour
         for (int i = 0; i< UIElement.Length; i++)
         {
             UIElement[i].color = alpha;
-            UIElement[i].DOColor(UIRootColor[i], 0.2f);
+            UIElement[i].DOColor(UIRootColor[i], 0.1f);
         }
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.15f);
         log_text.text = content;
     }
     public void ClearLog()
