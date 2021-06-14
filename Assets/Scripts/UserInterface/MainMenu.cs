@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
     public Text coin_text;
     public Text level_text;
     public int max_current_level;
+    public GameObject tutorials;
     IEnumerator Start()
     {
         yield return new WaitForSeconds(.1f);
@@ -20,7 +21,7 @@ public class MainMenu : MonoBehaviour
     void UpdateVisible()
     {
         coin_text.text = GameManager.instance.tmp_data.current_coin.ToString();
-        level_text.text = GameManager.instance.tmp_data.last_level.ToString();
+        level_text.text ="Lv." + GameManager.instance.tmp_data.last_level.ToString();
     }
     public void Endless()
     {
@@ -36,7 +37,11 @@ public class MainMenu : MonoBehaviour
     }
     public void Play()
     {
-
+        tutorials.SetActive(true);
     }
 
+    public void ClickToturial()
+    {
+        GameManager.instance.LoadLevel();
+    }
 }

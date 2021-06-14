@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
             OnUpdateData.Invoke();
         }
     }
+
     public static GameManager instance;
     public UnityEvent OnUpdateData;
     private void Awake()
@@ -32,6 +34,18 @@ public class GameManager : MonoBehaviour
         {
             if (instance != this) Destroy(this);
         }
+    }
+    public void LoadLevel()
+    {
+        SceneManager.LoadScene("game_" + tmp_data.last_level);
+    }
+    public void BackToMain()
+    {
+        SceneManager.LoadScene("start_scene");
+    }
+    public void EndLessMode()
+    {
+        SceneManager.LoadScene("endless");
     }
 }
 [Serializable]

@@ -10,11 +10,23 @@ public class CameraFollow : MonoBehaviour
     public Camera cam;
     private void Start()
     {
-        OnStartGame();
+        LevelManager.instance.OnStartLevel.AddListener(OnStartGame);
+        LevelManager.instance.OnPlayerDeath.AddListener(OnDeath);
+        LevelManager.instance.OnPlayerWin.AddListener(OnWin);
+    }
+    private void OnDestroy()
+    {
+        LevelManager.instance.OnStartLevel.RemoveListener(OnStartGame);
+        LevelManager.instance.OnPlayerDeath.RemoveListener(OnDeath);
+        LevelManager.instance.OnPlayerWin.AddListener(OnWin);
     }
     void OnDeath()
     {
 
+        StartCoroutine(Smoth_value(15, 10, 1f));
+    }
+    void OnWin()
+    {
         StartCoroutine(Smoth_value(15, 10, 1f));
     }
     IEnumerator Smoth_value(float start, float end, float time)
@@ -31,6 +43,7 @@ public class CameraFollow : MonoBehaviour
     Vector3 follow_pos = new Vector3();
     private void Update()
     {
+        if (player_target == null) return;
         if (transform.position.x - follow_radius > player_target.position.x || transform.position.x + follow_radius < player_target.position.x)
         {
             follow_pos = new Vector3( player_target.position.x, transform.position.y,follow_pos.z);
