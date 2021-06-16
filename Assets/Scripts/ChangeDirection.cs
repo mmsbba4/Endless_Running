@@ -4,19 +4,8 @@ using UnityEngine;
 
 public class ChangeDirection : MonoBehaviour
 {
-    BoxCollider col;
-    private void Start()
+    public void HasUsed()
     {
-        col = GetComponent<BoxCollider>();
-    }
-    public void Trigger()
-    {
-        StartCoroutine(disable());
-    }
-    IEnumerator disable()
-    {
-        col.enabled = false;
-        yield return new WaitForSeconds(2);
-        col.enabled = true;
+        GetComponent<BoxCollider>().enabled = false;
     }
 }

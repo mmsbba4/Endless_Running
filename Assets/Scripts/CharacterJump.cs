@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public class CharacterJump : MonoBehaviour
 {
     public Rigidbody rb;
     public float speed;
@@ -22,20 +22,9 @@ public class Character : MonoBehaviour
 
     void Update()
     {
-        //rb.velocity = new Vector3(transform.forward.x * speed, rb.velocity.y, transform.forward.z * speed);
-        //m_animator.SetBool("is_grounded", Is_grounded);
-        //if (waitforRotate)
-        //{
-        //    print(Vector3.Distance(transform.position, new Vector3(rotTransform.position.x, transform.position.y, rotTransform.position.z)));
-        //    if (Vector3.Distance(transform.position, new Vector3(rotTransform.position.x, transform.position.y, rotTransform.position.z)) < 0.2f && Is_grounded)
-        //    {
-        //        transform.rotation = rotTransform.rotation;
-        //        waitforRotate = false;
-        //    }
-            
-        //}
+        m_animator.SetBool("is_grounded", Is_grounded);
     }
-  public  bool is_jumped = false;
+    public bool is_jumped = false;
     public void Touch()
     {
         if (Is_grounded)
@@ -62,8 +51,6 @@ public class Character : MonoBehaviour
             if (!is_jumped) is_jumped = true;
         }
     }
-    bool waitforRotate = false;
-    Transform rotTransform;
     private void OnCollisionEnter(Collision collision)
     {
 
@@ -71,25 +58,6 @@ public class Character : MonoBehaviour
         {
             if (is_jumped) is_jumped = false;
             Is_grounded = true;
-        }
-
-        if (collision.gameObject.layer == 8)
-        {
-                rotTransform = collision.transform;
-                waitforRotate = true;
-                collision.gameObject.GetComponent<ChangeDirection>().HasUsed();
-        }
-        if (collision.gameObject.layer == 9)
-        {
-            collision.gameObject.GetComponent<TeleportDoor>().TriggerDoor(transform);
-        }
-        if (collision.gameObject.layer == 4)
-        {
-            Death();
-        }
-        if (collision.gameObject.layer == 10)
-        {
-            Win();
         }
     }
     void Win()
@@ -99,7 +67,7 @@ public class Character : MonoBehaviour
     }
     void Death()
     {
-        
+
         LevelManager.instance.PlayerDeath();
         Destroy(gameObject);
     }
