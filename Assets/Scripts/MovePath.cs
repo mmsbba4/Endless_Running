@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class MovePath : MonoBehaviour
 {
+    public UnityEvent OnStartPath;
+    public UnityEvent OnDonePath;
     public List<Transform> path;
     public MovePath connected_path;
     private void OnDrawGizmos()
