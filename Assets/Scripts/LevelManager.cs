@@ -27,8 +27,8 @@ public class LevelManager : MonoBehaviour
         Coin.text = GameManager.instance.tmp_data.current_coin+ "";
         CurrentLv.text = "LEVEL "+ (GameManager.instance.tmp_data.last_level+1);
         CurrentLvWin.text = "LEVEL " + (GameManager.instance.tmp_data.last_level + 1);
-        CurrentLvSli.text = (GameManager.instance.tmp_data.last_level +1) + "";
-        NextLvSli.text = (GameManager.instance.tmp_data.last_level + 2) + "";
+        CurrentLvSli.text = "lv." + (GameManager.instance.tmp_data.last_level + 1);
+        NextLvSli.text = "lv." + (GameManager.instance.tmp_data.last_level + 2);
         OnStartLevel.Invoke();
     }
     public void Touch()
