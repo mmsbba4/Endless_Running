@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class J : MonoBehaviour
 {
-    public Animator m_anim;
+    //public Animator m_anim;
     public Rigidbody rb;
     public bool Is_grounded = true;
     public float jump_speed;
@@ -21,7 +21,7 @@ public class J : MonoBehaviour
     {
         if (Is_grounded)
         {
-            m_anim.SetTrigger("jump");
+            //m_anim.SetTrigger("jump");
             is_jump = true;
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y + jump_speed, rb.velocity.z);
         }
@@ -29,7 +29,7 @@ public class J : MonoBehaviour
         {
             if (is_jump)
             {
-                m_anim.SetTrigger("double_jump");
+               // m_anim.SetTrigger("double_jump");
                 rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y + jump_speed, rb.velocity.z);
                 is_jump = false;
             }
@@ -42,8 +42,8 @@ public class J : MonoBehaviour
         if (collision.gameObject.layer == 0)
         {
             Is_grounded = false;
-            m_anim.SetBool("is_grounded", Is_grounded);
-        }
+           // m_anim.SetBool("is_grounded", Is_grounded);
+        }//
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -52,7 +52,7 @@ public class J : MonoBehaviour
         {
             is_jump = false;
             Is_grounded = true;
-            m_anim.SetBool("is_grounded", Is_grounded);
+            //m_anim.SetBool("is_grounded", Is_grounded);
         }
         if (collision.gameObject.layer == 4)
         {
@@ -61,7 +61,7 @@ public class J : MonoBehaviour
     }
     public void Win()
     {
-        m_anim.SetTrigger("win");
+        //m_anim.SetTrigger("win");
         LevelManager.instance.PlayerWin();
     }
     void Death()
