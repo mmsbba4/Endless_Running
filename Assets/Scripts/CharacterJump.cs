@@ -60,11 +60,6 @@ public class CharacterJump : MonoBehaviour
             Is_grounded = true;
         }
     }
-    void Win()
-    {
-        m_animator.SetTrigger("win");
-        LevelManager.instance.PlayerWin();
-    }
     void Death()
     {
 

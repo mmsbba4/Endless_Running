@@ -13,8 +13,6 @@ public class PlayerMoveWithPath : MonoBehaviour
          current_path.OnStartPath.Invoke();
          StartCoroutine(current_process);
     }
-
-    public MovePath test_new_path;
     IEnumerator current_process;
     public float speed;
     int index = 0;

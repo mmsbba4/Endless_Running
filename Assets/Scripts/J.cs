@@ -62,7 +62,6 @@ public class J : MonoBehaviour
     public void Win()
     {
         //m_anim.SetTrigger("win");
-        LevelManager.instance.PlayerWin();
     }
     void Death()
     {

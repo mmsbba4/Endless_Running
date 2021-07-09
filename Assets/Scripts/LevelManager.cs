@@ -46,6 +46,8 @@ public class LevelManager : MonoBehaviour
     }
     public void PlayerWin()
     {
+        GameManager.instance.tmp_data.last_level += 1;
+        print(GameManager.instance.tmp_data.last_level);
         OnPlayerWin.Invoke();
     }
 }
