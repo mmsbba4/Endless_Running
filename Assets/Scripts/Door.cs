@@ -7,6 +7,6 @@ public class Door : MonoBehaviour
     public Animator m_anim;
     public void Open()
     {
-        m_anim.SetTrigger("open");
+        //m_anim.SetTrigger("open");
     }
 }

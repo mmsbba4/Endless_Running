@@ -13,13 +13,14 @@ public class LevelManager : MonoBehaviour
     public UnityEvent OnPlayerWin;
     public UnityEvent OnStartLevel;
     public float complete_time;
+    public Distance_record record;
     private void Awake()
     {
         instance = this;
     }
     private void FixedUpdate()
     {
-        level_sli.value = Time.time;
+        level_sli.value = record.totalDistance;
     }
     private void Start()
     {
@@ -34,6 +35,16 @@ public class LevelManager : MonoBehaviour
     public void Touch()
     {
         OnTouch.Invoke();
+    }
+    
+    public void SettingPress()
+    {
+        General_canvas.instance.PressSetting();
+        General_canvas.instance.OpenUI();
+    }
+    public void CharacterPress()
+    {
+        General_canvas.instance.PressChoiseCharacter();
     }
     public void PlayClick()
     {

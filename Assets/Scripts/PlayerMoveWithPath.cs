@@ -7,8 +7,9 @@ public class PlayerMoveWithPath : MonoBehaviour
     public UnityEvent OnComplete;
     public MovePath current_path;
     public float x;
-    void Start()
+    IEnumerator Start()
     {
+         yield return new WaitForSeconds(1.5f);
          current_process = move_position();
          current_path.OnStartPath.Invoke();
          StartCoroutine(current_process);

@@ -19,6 +19,7 @@ public class J : MonoBehaviour
     }
     void Touch()
     {
+        if (Time.timeScale != 1) return;
         if (Is_grounded)
         {
             //m_anim.SetTrigger("jump");

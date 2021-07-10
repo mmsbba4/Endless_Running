@@ -35,6 +35,14 @@ public class MainMenu : MonoBehaviour
         }
 
     }
+    public void SettingPress()
+    {
+        General_canvas.instance.PressSetting();
+    }
+    public void ChoiseCharacter()
+    {
+        General_canvas.instance.PressChoiseCharacter();
+    }
     public void Play()
     {
         tutorials.SetActive(true);
