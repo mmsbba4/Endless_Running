@@ -7,7 +7,11 @@ public class Loading_canvas : MonoBehaviour
     public GameObject[] object_view;
     void OnEnable()
     {
+#if UNITY_EDITOR
+        gameObject.SetActive(false);
+#else
         StartCoroutine(Process());
+#endif
     }
     IEnumerator Process()
     {

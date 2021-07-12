@@ -8,11 +8,16 @@ public class MainMenu : MonoBehaviour
     public Text level_text;
     public int max_current_level;
     public GameObject tutorials;
+    public AudioSource bgSound;
+    bool is_started = false;
     IEnumerator Start()
     {
-        yield return new WaitForSeconds(.1f);
+        is_started = false;
+        yield return new WaitForSeconds(.5f);
         GameManager.instance.OnUpdateData.AddListener(UpdateVisible);
         UpdateVisible();
+        yield return new WaitForSecondsRealtime(1.4f);
+        bgSound.Play();
     }
     private void OnDestroy()
     {
@@ -50,6 +55,12 @@ public class MainMenu : MonoBehaviour
 
     public void ClickToturial()
     {
+        if (!is_started) StartCoroutine(StartGame());
+    }
+    IEnumerator StartGame()
+    {
+        is_started = true;
+        yield return new WaitForSeconds(1);
         GameManager.instance.LoadLevel();
     }
 }

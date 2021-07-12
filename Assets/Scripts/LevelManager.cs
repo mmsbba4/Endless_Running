@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
-    public Text Coin, CurrentLv, CurrentLvSli, NextLvSli,PercentFaild, CurrentLvWin;
+    public Text Coin, CurrentLv, CurrentLvSli, NextLvSli,PercentFaild, CurrentLvWin, bonus_coin_t, colected_coin_t;
     public Slider level_sli;
     public UnityEvent OnTouch;
     public static LevelManager instance;
@@ -14,6 +14,20 @@ public class LevelManager : MonoBehaviour
     public UnityEvent OnStartLevel;
     public float complete_time;
     public Distance_record record;
+    public AudioSource bg_music;
+    public int colected_coin;
+    IEnumerator Start()
+    {
+        level_sli.maxValue = complete_time;
+        Coin.text = GameManager.instance.tmp_data.current_coin + "";
+        CurrentLv.text = "LEVEL " + (GameManager.instance.tmp_data.last_level + 1);
+        CurrentLvWin.text = "LEVEL " + (GameManager.instance.tmp_data.last_level + 1);
+        CurrentLvSli.text = "lv." + (GameManager.instance.tmp_data.last_level + 1);
+        NextLvSli.text = "lv." + (GameManager.instance.tmp_data.last_level + 2);
+        OnStartLevel.Invoke();
+        yield return new WaitForSecondsRealtime(1.5f);
+        bg_music.Play();
+    }
     private void Awake()
     {
         instance = this;
@@ -21,16 +35,6 @@ public class LevelManager : MonoBehaviour
     private void FixedUpdate()
     {
         level_sli.value = record.totalDistance;
-    }
-    private void Start()
-    {
-        level_sli.maxValue = complete_time;
-        Coin.text = GameManager.instance.tmp_data.current_coin+ "";
-        CurrentLv.text = "LEVEL "+ (GameManager.instance.tmp_data.last_level+1);
-        CurrentLvWin.text = "LEVEL " + (GameManager.instance.tmp_data.last_level + 1);
-        CurrentLvSli.text = "lv." + (GameManager.instance.tmp_data.last_level + 1);
-        NextLvSli.text = "lv." + (GameManager.instance.tmp_data.last_level + 2);
-        OnStartLevel.Invoke();
     }
     public void Touch()
     {
@@ -52,13 +56,19 @@ public class LevelManager : MonoBehaviour
     }
     public void PlayerDeath()
     {
-        PercentFaild.text = (int)(complete_time/100f*level_sli.value) + "% FAILED!";
+        PercentFaild.text = (int)(level_sli.value/(complete_time / 100f)) + "% FAILED!";
         OnPlayerDeath.Invoke();
+        bg_music.Stop();
+        bg_music.pitch = 1;
+        bg_music.Play();
     }
     public void PlayerWin()
     {
-        GameManager.instance.tmp_data.last_level += 1;
-        print(GameManager.instance.tmp_data.last_level);
+        GameManager.instance.AddLevel();
+        int bunus_coin = Random.Range(0, 25);
+        bonus_coin_t.text =  "+" +bunus_coin.ToString() + " BONUS LEVEL";
+        colected_coin_t.text =  "+" +colected_coin;
+        GameManager.instance.AddCoin(bunus_coin + colected_coin);
         OnPlayerWin.Invoke();
     }
 }

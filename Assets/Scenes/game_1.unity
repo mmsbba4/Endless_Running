@@ -491,6 +491,10 @@ MonoBehaviour:
   Is_grounded: 1
   jump_speed: 17.5
   player_move: {fileID: 1072532694}
+  jump_short: {fileID: 3919310887068954106, guid: 97a379584bb15014aa90316048ce7062,
+    type: 3}
+  jump_long: {fileID: 5170865376979069459, guid: 7ca5b1bf35ecde94caf72e88cff848e5,
+    type: 3}
 --- !u!1 &305381279
 GameObject:
   m_ObjectHideFlags: 0
@@ -4674,6 +4678,8 @@ MonoBehaviour:
   NextLvSli: {fileID: 431557584}
   PercentFaild: {fileID: 1176949960}
   CurrentLvWin: {fileID: 1542939844}
+  bonus_coin_t: {fileID: 0}
+  colected_coin_t: {fileID: 0}
   level_sli: {fileID: 1041849712}
   OnTouch:
     m_PersistentCalls:
@@ -4733,6 +4739,8 @@ MonoBehaviour:
       m_Calls: []
   complete_time: 30
   record: {fileID: 1072532695}
+  bg_music: {fileID: 0}
+  colected_coin: 0
 --- !u!1 &2116874905
 GameObject:
   m_ObjectHideFlags: 0
