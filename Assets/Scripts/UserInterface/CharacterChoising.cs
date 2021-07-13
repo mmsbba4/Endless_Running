@@ -10,8 +10,10 @@ public class CharacterChoising : MonoBehaviour
     public UnityEngine.UI.Text coin_text, current_level;
     private void OnEnable()
     {
+        GameManager.instance.OnUpdateData.AddListener(UpdateVisible);
         UpdateVisible();
     }
+
     void UpdateVisible()
     {
         coin_text.text = GameManager.instance.tmp_data.current_coin.ToString();
@@ -56,6 +58,10 @@ public class CharacterChoising : MonoBehaviour
             
         }
     }
+    public void PlayClick()
+    {
+        GameManager.instance.LoadLevel();
+    }
     int GetNotExist()
     {
         int rd = Random.Range(0, marker_locked.Length);
@@ -72,7 +78,7 @@ public class CharacterChoising : MonoBehaviour
     {
         if (GameManager.instance.tmp_data.avalable_character.Contains(index))
         {
-            GameManager.instance.tmp_data.current_player = index;
+            GameManager.instance.SetPlayer(index);
             UpdateVisible();
         }
         else

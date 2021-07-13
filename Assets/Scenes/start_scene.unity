@@ -6609,6 +6609,7 @@ GameObject:
   - component: {fileID: 952380742}
   - component: {fileID: 952380744}
   - component: {fileID: 952380745}
+  - component: {fileID: 952380746}
   m_Layer: 5
   m_Name: Character_choise
   m_TagString: Untagged
@@ -6767,6 +6768,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f69bb3775dbc0834ca5283f00f586442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &952380746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952380740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe9353602477af42b1ec0edfed0a1f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIElement: []
+  UItext: []
+  UIRootColor: []
+  UItextRootColor: []
+  alpha: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &956019975
 GameObject:
   m_ObjectHideFlags: 0
@@ -7213,7 +7231,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 997322602}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 952380746}
+        m_MethodName: SetActiveToFalse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 952380744}
+        m_MethodName: PlayClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &997322602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13384,9 +13424,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 952380740}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 952380746}
+        m_MethodName: SetActiveToFalse
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

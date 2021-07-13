@@ -52,6 +52,7 @@ public class PlayerMoveWithPath : MonoBehaviour
             {
                 LevelManager.instance.PlayerWin();
                 OnComplete.Invoke();
+                CameraFollow.instance.CompletePath();
             }
         }
     }

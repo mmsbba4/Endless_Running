@@ -70,5 +70,8 @@ public class LevelManager : MonoBehaviour
         colected_coin_t.text =  "+" +colected_coin;
         GameManager.instance.AddCoin(bunus_coin + colected_coin);
         OnPlayerWin.Invoke();
+        bg_music.Stop();
+        bg_music.pitch = 1;
+        bg_music.Play();
     }
 }

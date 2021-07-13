@@ -4,21 +4,32 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
+    public static CameraFollow instance;
     public Transform player_target;
-    public float offset;
     public float follow_radius;
     public Camera cam;
-    private void Start()
+    public float minX, maxX, minY, maxY;
+
+    private void Awake()
     {
-        LevelManager.instance.OnStartLevel.AddListener(OnStartGame);
+        instance = this;
+    }
+    IEnumerator Start()
+    {
         LevelManager.instance.OnPlayerDeath.AddListener(OnDeath);
         LevelManager.instance.OnPlayerWin.AddListener(OnWin);
+        yield return new WaitForSeconds(1.5f);
+        OnStartGame();
     }
     private void OnDestroy()
     {
-        LevelManager.instance.OnStartLevel.RemoveListener(OnStartGame);
         LevelManager.instance.OnPlayerDeath.RemoveListener(OnDeath);
         LevelManager.instance.OnPlayerWin.AddListener(OnWin);
+    }
+    bool is_on_path = true;
+    public void CompletePath()
+    {
+        is_on_path = false;
     }
     void OnDeath()
     {
@@ -45,12 +56,19 @@ public class CameraFollow : MonoBehaviour
     {
         if (player_target == null) return;
         follow_pos = new Vector3(player_target.position.x, transform.position.y, player_target.position.z);
-        transform.position = Vector3.Lerp(transform.position, follow_pos, Time.smoothDeltaTime * followSpeed);
+        Vector3 current_pos  = Vector3.Lerp(transform.position, follow_pos, Time.smoothDeltaTime * followSpeed);
+        if (is_on_path)
+        {
+            transform.position = new Vector3(Mathf.Clamp(current_pos.x, minX, maxX), current_pos.y, Mathf.Clamp(current_pos.z, minY, maxY));
+        }
+        else
+        {
+            transform.position = current_pos;
+        }
     }
     public float followSpeed;
     void OnStartGame()
     {
-        print("start game");
       StartCoroutine(Smoth_value(15, 25, 1f));
     }
 

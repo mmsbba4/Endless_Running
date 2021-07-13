@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
         dat.current_player = player;
         tmp_data = dat;
     }
+    
     private void Awake()
     {
         print("GameManager Awake");
@@ -59,11 +60,19 @@ public class GameManager : MonoBehaviour
     {
         string data_string = PlayerPrefs.GetString("data");
         print("Load data =  " + data_string);
-        UserData = JsonUtility.FromJson<userdata>(data_string);
+        if (data_string.Length < 10)
+        {
+            tmp_data = new userdata();
+        }
+        else
+        {
+            tmp_data = JsonUtility.FromJson<userdata>(data_string);
+        }
+        
     }
     void SaveData()
     {
-        string data_string = JsonUtility.ToJson(UserData);
+        string data_string = JsonUtility.ToJson(tmp_data);
         print(data_string);
         PlayerPrefs.SetString("data", data_string);
     }
