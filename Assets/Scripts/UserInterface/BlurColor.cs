@@ -61,6 +61,10 @@ public class BlurColor : MonoBehaviour
     {
         StartCoroutine(Clear());
     }
+    public void SetActiveFalseDuration(float duration)
+    {
+        StartCoroutine(Clear(duration));
+    }
     IEnumerator Clear()
     {
         for (int i = 0; i < UIElement.Length; i++)
@@ -74,6 +78,21 @@ public class BlurColor : MonoBehaviour
             n.SetUpdate(true);
         }
         yield return new WaitForSeconds(0.25f);
+        gameObject.SetActive(false);
+    }
+    IEnumerator Clear(float duration)
+    {
+        for (int i = 0; i < UIElement.Length; i++)
+        {
+            Tweener n = UIElement[i].DOColor(alpha, duration - 0.2f);
+            n.SetUpdate(true);
+        }
+        for (int i = 0; i < UItext.Length; i++)
+        {
+            Tween n = UItext[i].DOColor(alpha, duration - 0.2f);
+            n.SetUpdate(true);
+        }
+        yield return new WaitForSeconds(duration);
         gameObject.SetActive(false);
     }
 }

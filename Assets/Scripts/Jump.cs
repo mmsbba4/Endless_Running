@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Jump : MonoBehaviour
 {
-    //public Animator m_anim;
+    public Animator m_anim;
     public Rigidbody rb;
     public bool Is_grounded = true;
     public float jump_speed;
@@ -23,7 +23,7 @@ public class Jump : MonoBehaviour
         if (Time.timeScale != 1) return;
         if (Is_grounded)
         {
-            //m_anim.SetTrigger("jump");
+            m_anim.SetTrigger("jump");
             is_jump = true;
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y + jump_speed, rb.velocity.z);
             Destroy(Instantiate(jump_short), 0.2f);
@@ -32,7 +32,7 @@ public class Jump : MonoBehaviour
         {
             if (is_jump)
             {
-               // m_anim.SetTrigger("double_jump");
+                m_anim.SetTrigger("double_jump");
                 rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y + jump_speed, rb.velocity.z);
                 is_jump = false;
                 Destroy(Instantiate(jump_long), 0.3f);
@@ -46,7 +46,7 @@ public class Jump : MonoBehaviour
         if (collision.gameObject.layer == 0)
         {
             Is_grounded = false;
-           // m_anim.SetBool("is_grounded", Is_grounded);
+            m_anim.SetBool("is_grounded", Is_grounded);
         }//
     }
     private void OnCollisionEnter(Collision collision)
@@ -56,19 +56,23 @@ public class Jump : MonoBehaviour
         {
             is_jump = false;
             Is_grounded = true;
-            //m_anim.SetBool("is_grounded", Is_grounded);
+            m_anim.SetBool("is_grounded", Is_grounded);
         }
         if (collision.gameObject.layer == 4)
         {
             Death();
+            Instantiate(Resources.Load("die_effect") as GameObject, collision.contacts[0].point, Quaternion.identity);
         }
     }
     public void Win()
     {
-        //m_anim.SetTrigger("win");
+        m_anim.SetTrigger("done");
+        m_anim.SetBool("is_running", false);
     }
+    public GameObject shadow;
     void Death()
     {
+        Destroy(shadow);
         player_move.StopMove();
         LevelManager.instance.PlayerDeath();
         Destroy(gameObject);
