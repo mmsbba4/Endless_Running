@@ -9,7 +9,6 @@ public class CameraFollow : MonoBehaviour
     public float follow_radius;
     public Camera cam;
     public float minX, maxX, minY, maxY;
-
     private void Awake()
     {
         instance = this;
