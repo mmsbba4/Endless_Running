@@ -40,13 +40,13 @@ public class GameManager : MonoBehaviour
         dat.current_player = player;
         tmp_data = dat;
     }
+    public bool endless_mode = false;
     
     private void Awake()
     {
-        print("GameManager Awake");
+        endless_mode = false;
         if (instance == null)
         {
-            print("instance = " + gameObject.name);
             instance = this;
             LoadData();
             DontDestroyOnLoad(this);
@@ -90,6 +90,11 @@ public class GameManager : MonoBehaviour
     public void EndLessMode()
     {
         SceneManager.LoadScene("endless");
+    }
+    public void BackToHome()
+    {
+        endless_mode = true;
+        SceneManager.LoadScene("start_scene");
     }
 }
 [Serializable]

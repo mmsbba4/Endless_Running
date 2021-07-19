@@ -47,21 +47,30 @@ public class Jump : MonoBehaviour
         {
             Is_grounded = false;
             m_anim.SetBool("is_grounded", Is_grounded);
-        }//
+            print("Grounded :" + Is_grounded);
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
-
         if (collision.gameObject.layer == 0)
         {
             is_jump = false;
             Is_grounded = true;
             m_anim.SetBool("is_grounded", Is_grounded);
+            print("Grounded :" + Is_grounded);
         }
         if (collision.gameObject.layer == 4)
         {
             Death();
             Instantiate(Resources.Load("die_effect") as GameObject, collision.contacts[0].point, Quaternion.identity);
+        }
+    }
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.layer == 0)
+        {
+            Is_grounded = true;
+            m_anim.SetBool("is_grounded", Is_grounded);
         }
     }
     public void Win()

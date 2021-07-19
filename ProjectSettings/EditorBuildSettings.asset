@@ -7,23 +7,14 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/start_scene.unity
-    guid: d084790eb644eee4fa629b49b251cc57
+    guid: 7dec1d89262fb9e43b3024aa5548cc6d
   - enabled: 1
     path: Assets/Scenes/game_0.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/game_1.unity
-    guid: 4a9746cf60f2e6a4292b14435ec1ab5a
+    guid: 62ba1eedb4463c94eb93391b1b322e61
   - enabled: 1
-    path: Assets/Scenes/game_2.unity
-    guid: fb8f7176d79e6fb46941a92ffbe27742
-  - enabled: 1
-    path: Assets/Scenes/game_3.unity
-    guid: 2d96228c5aa78ed48a574b3c6bf0c369
-  - enabled: 1
-    path: Assets/Scenes/game_4.unity
-    guid: f65aefb5db4f488498b091527ada75e5
-  - enabled: 1
-    path: Assets/Scenes/game_5.unity
-    guid: 510333366beecb24cbf912fb318dc684
+    path: Assets/Scenes/endless.unity
+    guid: e35cad0704b1b0a42b3ae15b86fc962d
   m_configObjects: {}

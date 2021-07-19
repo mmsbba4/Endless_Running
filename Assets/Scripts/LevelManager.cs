@@ -18,12 +18,15 @@ public class LevelManager : MonoBehaviour
     public int colected_coin;
     IEnumerator Start()
     {
-        level_sli.maxValue = complete_time;
+        if (!GameManager.instance.endless_mode)
+        {
+            level_sli.maxValue = complete_time;
+            CurrentLv.text = "LEVEL " + (GameManager.instance.tmp_data.last_level + 1);
+            CurrentLvWin.text = "LEVEL " + (GameManager.instance.tmp_data.last_level + 1);
+            CurrentLvSli.text = "lv." + (GameManager.instance.tmp_data.last_level + 1);
+            NextLvSli.text = "lv." + (GameManager.instance.tmp_data.last_level + 2);
+        }
         Coin.text = GameManager.instance.tmp_data.current_coin + "";
-        CurrentLv.text = "LEVEL " + (GameManager.instance.tmp_data.last_level + 1);
-        CurrentLvWin.text = "LEVEL " + (GameManager.instance.tmp_data.last_level + 1);
-        CurrentLvSli.text = "lv." + (GameManager.instance.tmp_data.last_level + 1);
-        NextLvSli.text = "lv." + (GameManager.instance.tmp_data.last_level + 2);
         OnStartLevel.Invoke();
         yield return new WaitForSecondsRealtime(1.5f);
         bg_music.Play();
@@ -34,7 +37,8 @@ public class LevelManager : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        level_sli.value = record.totalDistance;
+        if (!GameManager.instance.endless_mode)
+            level_sli.value = record.totalDistance;
     }
     public void Touch()
     {
@@ -61,6 +65,14 @@ public class LevelManager : MonoBehaviour
         bg_music.Stop();
         bg_music.pitch = 1;
         bg_music.Play();
+    }
+    public void RePlayEndless() 
+    {
+        GameManager.instance.EndLessMode();
+    }
+    public void Home()
+    {
+        GameManager.instance.BackToHome();
     }
     public void PlayerWin()
     {

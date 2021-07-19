@@ -58,7 +58,7 @@ public class CameraFollow : MonoBehaviour
         Vector3 current_pos  = Vector3.Lerp(transform.position, follow_pos, Time.smoothDeltaTime * followSpeed);
         if (is_on_path)
         {
-            transform.position = new Vector3(Mathf.Clamp(current_pos.x, minX, maxX), current_pos.y, Mathf.Clamp(current_pos.z, minY, maxY));
+            transform.position = new Vector3(/*Mathf.Clamp(current_pos.x, minX, maxX)*/0, current_pos.y, Mathf.Clamp(current_pos.z, minY, maxY));
         }
         else
         {

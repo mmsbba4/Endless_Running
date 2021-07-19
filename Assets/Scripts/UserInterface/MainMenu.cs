@@ -32,7 +32,8 @@ public class MainMenu : MonoBehaviour
     {
         if (GameManager.instance.tmp_data.last_level >= max_current_level)
         {
-            //go endless
+            GameManager.instance.endless_mode = true;
+            Play();
         }
         else
         {
@@ -55,12 +56,29 @@ public class MainMenu : MonoBehaviour
 
     public void ClickToturial()
     {
-        if (!is_started) StartCoroutine(StartGame());
+        if (!is_started)
+        {
+            if (GameManager.instance.endless_mode)
+            {
+                StartCoroutine(StartEndless());
+            }
+            else
+            {
+                StartCoroutine(StartGame());
+            }
+            
+        }
     }
     IEnumerator StartGame()
     {
         is_started = true;
         yield return new WaitForSeconds(1);
         GameManager.instance.LoadLevel();
+    }
+    IEnumerator StartEndless()
+    {
+        is_started = true;
+        yield return new WaitForSeconds(1);
+        GameManager.instance.EndLessMode();
     }
 }

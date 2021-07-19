@@ -22,4 +22,23 @@ public class MovePath : MonoBehaviour
             }
         }
     }
+    private void Start()
+    {
+        SpawnCoin();
+    }
+    void SpawnCoin()
+    {
+        if (path.Count > 1)
+        {
+            for (int i = 0; i < path.Count - 1; i++)
+            {
+                int coin_count = Random.Range(0,2);
+                if (coin_count > 0)
+                {
+                    Vector3 pos = Vector3.Lerp(path[i].position, path[i + 1].position, Random.Range(0.0f,1.0f));
+                    Instantiate(Resources.Load("road_coin"), new Vector3(pos.x, 0.3f, pos.z), Quaternion.LookRotation(path[i].position - path[i + 1].position));
+                }
+            }
+        }
+    }
 }
