@@ -13,6 +13,10 @@ public class Coin : MonoBehaviour
     {
         Instantiate(Resources.Load("coin_txt") as GameObject, transform.position, Quaternion.identity).GetComponent<BilBoardText>().SetText("+" + coint_value);
         GameManager.instance.AddCoin(coint_value);
+        if (LevelManager.instance != null)
+        {
+            LevelManager.instance.colected_coin += coint_value;
+        }
         Destroy(gameObject);
     }
 }

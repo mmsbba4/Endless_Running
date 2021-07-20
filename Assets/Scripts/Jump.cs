@@ -7,9 +7,8 @@ public class Jump : MonoBehaviour
     public Animator m_anim;
     public Rigidbody rb;
     public bool Is_grounded = true;
-    public float jump_speed;
+    public float jump_speed = 15;
     public PlayerMoveWithPath player_move;
-    public GameObject jump_short, jump_long;
     void Start()
     {
         LevelManager.instance.OnTouch.AddListener(Touch);
@@ -26,7 +25,7 @@ public class Jump : MonoBehaviour
             m_anim.SetTrigger("jump");
             is_jump = true;
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y + jump_speed, rb.velocity.z);
-            Destroy(Instantiate(jump_short), 0.2f);
+            Destroy(Instantiate(Resources.Load("short_touch")), 0.2f);
         }
         else
         {
@@ -35,7 +34,7 @@ public class Jump : MonoBehaviour
                 m_anim.SetTrigger("double_jump");
                 rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y + jump_speed, rb.velocity.z);
                 is_jump = false;
-                Destroy(Instantiate(jump_long), 0.3f);
+                Destroy(Instantiate(Resources.Load("long_touch")), 0.3f);
             }
         }
         

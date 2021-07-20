@@ -17,7 +17,7 @@ public class CharacterChoising : MonoBehaviour
     void UpdateVisible()
     {
         coin_text.text = GameManager.instance.tmp_data.current_coin.ToString();
-        current_level.text = "level " + GameManager.instance.tmp_data.last_level.ToString();
+        current_level.text = "LV. " + (GameManager.instance.tmp_data.last_level + 1).ToString();
         foreach (var i in marker_choised)
         {
             i.SetActive(false);
@@ -54,13 +54,15 @@ public class CharacterChoising : MonoBehaviour
             {
                 Log.instance.ShowLog("not enough coin");
             }
-            
-            
         }
     }
     public void PlayClick()
     {
         GameManager.instance.LoadLevel();
+    }
+    public void EndlessClick()
+    {
+        GameManager.instance.EndLessMode();
     }
     int GetNotExist()
     {

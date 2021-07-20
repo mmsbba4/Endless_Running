@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
         }
         set
         {
-            UserData = tmp_data;
+            UserData = value;
             OnUpdateData.Invoke();
             SaveData();
         }
@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            
             LoadData();
             DontDestroyOnLoad(this);
         }
@@ -60,7 +61,7 @@ public class GameManager : MonoBehaviour
     {
         string data_string = PlayerPrefs.GetString("data");
         print("Load data =  " + data_string);
-        if (data_string.Length < 10)
+        if (data_string.Length < 5)
         {
             tmp_data = new userdata();
         }
@@ -68,11 +69,10 @@ public class GameManager : MonoBehaviour
         {
             tmp_data = JsonUtility.FromJson<userdata>(data_string);
         }
-        
     }
     void SaveData()
     {
-        string data_string = JsonUtility.ToJson(tmp_data);
+        string data_string = JsonUtility.ToJson(UserData);
         print(data_string);
         PlayerPrefs.SetString("data", data_string);
     }

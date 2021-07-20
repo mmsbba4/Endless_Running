@@ -26,14 +26,24 @@ public class LevelManager : MonoBehaviour
             CurrentLvSli.text = "lv." + (GameManager.instance.tmp_data.last_level + 1);
             NextLvSli.text = "lv." + (GameManager.instance.tmp_data.last_level + 2);
         }
-        Coin.text = GameManager.instance.tmp_data.current_coin + "";
+        UpdateData();
         OnStartLevel.Invoke();
         yield return new WaitForSecondsRealtime(1.5f);
         bg_music.Play();
+        GameManager.instance.OnUpdateData.AddListener(UpdateData);
+    }
+    private void OnDestroy()
+    {
+        GameManager.instance.OnUpdateData.RemoveListener(UpdateData);
     }
     private void Awake()
     {
         instance = this;
+    }
+
+    void UpdateData()
+    {
+        Coin.text = GameManager.instance.tmp_data.current_coin + "";
     }
     private void FixedUpdate()
     {
@@ -80,7 +90,7 @@ public class LevelManager : MonoBehaviour
         int bunus_coin = Random.Range(0, 25);
         bonus_coin_t.text =  "+" +bunus_coin.ToString() + " BONUS LEVEL";
         colected_coin_t.text =  "+" +colected_coin;
-        GameManager.instance.AddCoin(bunus_coin + colected_coin);
+        GameManager.instance.AddCoin(bunus_coin);
         OnPlayerWin.Invoke();
         bg_music.Stop();
         bg_music.pitch = 1;

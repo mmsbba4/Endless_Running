@@ -251,7 +251,6 @@ GameObject:
   - component: {fileID: 213723338}
   - component: {fileID: 213723337}
   - component: {fileID: 213723336}
-  - component: {fileID: 213723335}
   - component: {fileID: 213723339}
   m_Layer: 0
   m_Name: cloud_0
@@ -260,20 +259,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!64 &213723335
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 213723334}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &213723336
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5893,7 +5878,6 @@ GameObject:
   - component: {fileID: 775005049}
   - component: {fileID: 775005048}
   - component: {fileID: 775005047}
-  - component: {fileID: 775005046}
   - component: {fileID: 775005050}
   m_Layer: 0
   m_Name: cloud_1
@@ -5902,20 +5886,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!64 &775005046
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 775005045}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &775005047
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6799,7 +6769,6 @@ GameObject:
   - component: {fileID: 1026775251}
   - component: {fileID: 1026775250}
   - component: {fileID: 1026775249}
-  - component: {fileID: 1026775248}
   - component: {fileID: 1026775247}
   m_Layer: 0
   m_Name: cloud_1
@@ -6821,20 +6790,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CameraPerent: {fileID: 755374073}
---- !u!64 &1026775248
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1026775246}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1026775249
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6996,7 +6951,6 @@ GameObject:
   - component: {fileID: 1045865409}
   - component: {fileID: 1045865408}
   - component: {fileID: 1045865407}
-  - component: {fileID: 1045865406}
   - component: {fileID: 1045865405}
   m_Layer: 0
   m_Name: cloud_0
@@ -7018,20 +6972,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CameraPerent: {fileID: 755374073}
---- !u!64 &1045865406
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1045865404}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1045865407
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8157,7 +8097,6 @@ GameObject:
   - component: {fileID: 1608092704}
   - component: {fileID: 1608092703}
   - component: {fileID: 1608092702}
-  - component: {fileID: 1608092701}
   - component: {fileID: 1608092705}
   m_Layer: 0
   m_Name: cloud_2
@@ -8166,20 +8105,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!64 &1608092701
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1608092700}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1608092702
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8265,7 +8190,6 @@ GameObject:
   - component: {fileID: 1643973107}
   - component: {fileID: 1643973106}
   - component: {fileID: 1643973105}
-  - component: {fileID: 1643973104}
   - component: {fileID: 1643973103}
   m_Layer: 0
   m_Name: cloud_2
@@ -8287,20 +8211,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CameraPerent: {fileID: 755374073}
---- !u!64 &1643973104
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1643973102}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1643973105
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9468,8 +9378,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c97afc556caea1c44969477eb7ddec74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ConformX: 1
-  ConformY: 1
+  ConformX: 0
+  ConformY: 0
   Logging: 0
 --- !u!1 &2075521521
 GameObject:
@@ -10067,3 +9977,77 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 672d14c9565d7014eac33d4938223bfb, type: 3}
+--- !u!1001 &8612478426574074374
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4674420977584849090, guid: 41fd48563ae30f740bac298dcf92ccc5,
+        type: 3}
+      propertyPath: m_Name
+      value: Player_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674420977584849090, guid: 41fd48563ae30f740bac298dcf92ccc5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674420977584849091, guid: 41fd48563ae30f740bac298dcf92ccc5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674420977584849091, guid: 41fd48563ae30f740bac298dcf92ccc5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674420977584849091, guid: 41fd48563ae30f740bac298dcf92ccc5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.552
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674420977584849091, guid: 41fd48563ae30f740bac298dcf92ccc5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674420977584849091, guid: 41fd48563ae30f740bac298dcf92ccc5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.92387956
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674420977584849091, guid: 41fd48563ae30f740bac298dcf92ccc5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674420977584849091, guid: 41fd48563ae30f740bac298dcf92ccc5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.38268343
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674420977584849091, guid: 41fd48563ae30f740bac298dcf92ccc5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674420977584849091, guid: 41fd48563ae30f740bac298dcf92ccc5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674420977584849091, guid: 41fd48563ae30f740bac298dcf92ccc5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674420977584849091, guid: 41fd48563ae30f740bac298dcf92ccc5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 41fd48563ae30f740bac298dcf92ccc5, type: 3}
