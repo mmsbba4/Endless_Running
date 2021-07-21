@@ -26,7 +26,7 @@ public class Loading_canvas : MonoBehaviour
         object_view[0].SetActive(false);
         object_view[1].SetActive(false);
         object_view[2].SetActive(false);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
 }

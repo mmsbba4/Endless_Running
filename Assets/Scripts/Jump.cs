@@ -12,6 +12,7 @@ public class Jump : MonoBehaviour
     void Start()
     {
         LevelManager.instance.OnTouch.AddListener(Touch);
+        shadow.transform.localPosition = new Vector3(0,-0.95f,0);
     }
     private void OnDestroy()
     {

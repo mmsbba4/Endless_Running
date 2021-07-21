@@ -6,7 +6,6 @@ public class MainMenu : MonoBehaviour
 {
     public Text coin_text;
     public Text level_text;
-    public int max_current_level;
     public GameObject tutorials;
     public AudioSource bgSound;
     bool is_started = false;
@@ -26,20 +25,20 @@ public class MainMenu : MonoBehaviour
     void UpdateVisible()
     {
         coin_text.text = GameManager.instance.tmp_data.current_coin.ToString();
-        level_text.text ="Lv." + GameManager.instance.tmp_data.last_level.ToString();
+        level_text.text = "Lv." + (int)(GameManager.instance.tmp_data.last_level + 1);
     }
     public void Endless()
     {
-        if (GameManager.instance.tmp_data.last_level >= max_current_level)
+        
+        if (GameManager.instance.tmp_data.last_level >= GameManager.instance.current_max_level)
         {
             GameManager.instance.endless_mode = true;
-            Play();
+            tutorials.SetActive(true);
         }
         else
         {
-            Log.instance.ShowLog("complete maxLv first");
+            Log.instance.ShowLog("Please complete level 3");
         }
-
     }
     public void SettingPress()
     {
@@ -51,6 +50,7 @@ public class MainMenu : MonoBehaviour
     }
     public void Play()
     {
+        GameManager.instance.endless_mode = false;
         tutorials.SetActive(true);
     }
 
@@ -74,6 +74,7 @@ public class MainMenu : MonoBehaviour
         is_started = true;
         yield return new WaitForSeconds(1);
         GameManager.instance.LoadLevel();
+
     }
     IEnumerator StartEndless()
     {

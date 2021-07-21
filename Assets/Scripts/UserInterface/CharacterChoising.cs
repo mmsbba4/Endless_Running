@@ -40,7 +40,7 @@ public class CharacterChoising : MonoBehaviour
     {
         if (GameManager.instance.tmp_data.avalable_character.Count >= 20)
         {
-            Log.instance.ShowLog("not have unable character !");
+            Log.instance.ShowLog("All unlocked !");
         }
         else
         {
@@ -52,7 +52,7 @@ public class CharacterChoising : MonoBehaviour
             }
             else
             {
-                Log.instance.ShowLog("not enough coin");
+                Log.instance.ShowLog("Not enough coins !");
             }
         }
     }
@@ -85,7 +85,7 @@ public class CharacterChoising : MonoBehaviour
         }
         else
         {
-            Log.instance.ShowLog("Unusable character !");
+            Log.instance.ShowLog("Characters not unlocked !");
         }
     }
 }

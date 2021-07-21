@@ -7,6 +7,7 @@ public class General_canvas : MonoBehaviour
 {
     public Text CountDowntext;
     public static General_canvas instance;
+    public GameObject loading_canvas;
     private void Awake()
     {
         if (instance == null)
@@ -21,6 +22,11 @@ public class General_canvas : MonoBehaviour
                 Destroy(this);
             }
         }
+    }
+    public void ShowLoadCanvas()
+    {
+        print("showload");
+        loading_canvas.SetActive(true);
     }
     IEnumerator CountDown()
     {

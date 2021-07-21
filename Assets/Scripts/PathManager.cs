@@ -19,6 +19,7 @@ public class PathManager : MonoBehaviour
             start_path.OnStartPath.AddListener(start_door.Reasle);
             end_path.OnDonePath.AddListener(end_door.Hold);
             OnInitEndless.Invoke();
+            EndlessManager.instance.AddToQuery(gameObject);
         }
         else
         {

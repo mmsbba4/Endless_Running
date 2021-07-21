@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private userdata UserData;
+    public int current_max_level;
     public userdata tmp_data
     {
         get 
@@ -21,7 +22,6 @@ public class GameManager : MonoBehaviour
             SaveData();
         }
     }
-
     public void AddCoin(int coin)
     {
         userdata dat = tmp_data;
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
     {
         string data_string = PlayerPrefs.GetString("data");
         print("Load data =  " + data_string);
-        if (data_string.Length < 5)
+        if (data_string == "")
         {
             tmp_data = new userdata();
         }
@@ -73,7 +73,6 @@ public class GameManager : MonoBehaviour
     void SaveData()
     {
         string data_string = JsonUtility.ToJson(UserData);
-        print(data_string);
         PlayerPrefs.SetString("data", data_string);
     }
     public static GameManager instance;
@@ -81,19 +80,39 @@ public class GameManager : MonoBehaviour
 
     public void LoadLevel()
     {
-        SceneManager.LoadScene("game_" + tmp_data.last_level);
+        if(tmp_data.last_level < current_max_level)
+        {
+            General_canvas.instance.ShowLoadCanvas();
+            SceneManager.LoadScene("game_" + tmp_data.last_level);
+        }
+        else
+        {
+            int last_lv = current_max_level - 1;
+            General_canvas.instance.ShowLoadCanvas();
+            SceneManager.LoadScene("game_" + last_lv);
+        }
     }
     public void BackToMain()
     {
+        General_canvas.instance.ShowLoadCanvas();
         SceneManager.LoadScene("start_scene");
     }
     public void EndLessMode()
     {
-        SceneManager.LoadScene("endless");
+        if (tmp_data.last_level < current_max_level)
+        {
+            Log.instance.ShowLog("Please complete level " + current_max_level);
+        }
+        else
+        {
+            General_canvas.instance.ShowLoadCanvas();
+            SceneManager.LoadScene("endless");
+        }
     }
     public void BackToHome()
     {
         endless_mode = true;
+        General_canvas.instance.ShowLoadCanvas();
         SceneManager.LoadScene("start_scene");
     }
 }
@@ -104,4 +123,12 @@ public class userdata
     public int current_coin;
     public int last_level;
     public int current_player;
+    public userdata()
+    {
+        avalable_character = new List<int>();
+        avalable_character.Add(0);
+        current_coin = 1000;
+        last_level = 0;
+        current_player = 0;
+    }
 }
