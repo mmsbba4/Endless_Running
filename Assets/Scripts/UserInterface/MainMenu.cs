@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
@@ -47,6 +48,54 @@ public class MainMenu : MonoBehaviour
     public void ChoiseCharacter()
     {
         General_canvas.instance.PressChoiseCharacter();
+    }
+    public void RateClick()
+    {
+        if (!rate_link_click)
+        {
+            rate_link_click = true;
+            StartCoroutine(GetRequest());
+        }
+    }
+    bool rate_link_click = false;
+    IEnumerator GetRequest()
+    {
+#if UNITY_ANDROID
+        string link = "https://mmsbba4.github.io/storelink/android.html";
+#elif UNITY_IOS
+        string link = "https://mmsbba4.github.io/storelink/ios.html";
+#endif
+        using (WWW www = new WWW(link))
+        {
+            yield return www;
+            Application.OpenURL(www.text);
+            rate_link_click = false;
+            print(www.text);
+        }
+    }
+    bool click_my_game = false;
+    public void MyClickGame()
+    {
+        if (!click_my_game)
+        {
+            click_my_game = true;
+            StartCoroutine(GetRequest_MyGame());
+        }
+    }
+    IEnumerator GetRequest_MyGame()
+    {
+#if UNITY_ANDROID
+        string link = "https://mmsbba4.github.io/storelink/mygameandroid.html";
+#elif UNITY_IOS
+        string link = "https://mmsbba4.github.io/storelink/mygameios.html";
+#endif
+        using (WWW www = new WWW(link))
+        {
+            yield return www;
+            Application.OpenURL(www.text);
+            click_my_game = false;
+            print(www.text);
+        }
     }
     public void Play()
     {
