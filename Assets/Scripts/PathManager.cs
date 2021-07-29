@@ -12,7 +12,7 @@ public class PathManager : MonoBehaviour
     public Door start_door, end_door;
     void Start()
     {
-        GameManager.instance.endless_mode = true;
+        //GameManager.instance.endless_mode = true;
         if (GameManager.instance.endless_mode)
         {
             start_path.OnStartPath.AddListener(on_start_path);
@@ -23,6 +23,7 @@ public class PathManager : MonoBehaviour
         }
         else
         {
+
             Destroy(this);
         }
     }
