@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -21,10 +22,10 @@ public class LevelManager : MonoBehaviour
         if (!GameManager.instance.endless_mode)
         {
             level_sli.maxValue = complete_time;
-            CurrentLv.text = "LEVEL " + (GameManager.instance.tmp_data.last_level);
-            CurrentLvWin.text = "LEVEL " + (GameManager.instance.tmp_data.last_level);
-            CurrentLvSli.text = "lv." + (GameManager.instance.tmp_data.last_level);
-            NextLvSli.text = "lv." + (GameManager.instance.tmp_data.last_level + 1);
+            CurrentLv.text = "LEVEL " + (GameManager.instance.tmp_data.last_level + 1);
+            CurrentLvWin.text = "LEVEL " + (GameManager.instance.tmp_data.last_level +1);
+            CurrentLvSli.text = "lv." + (GameManager.instance.tmp_data.last_level+1);
+            NextLvSli.text = "lv." + (GameManager.instance.tmp_data.last_level + 2);
         }
         UpdateData();
         OnStartLevel.Invoke();
@@ -66,7 +67,7 @@ public class LevelManager : MonoBehaviour
     }
     public void PlayClick()
     {
-        GameManager.instance.LoadLevel();
+       GameManager.instance.LoadLevel();
     }
     public void PlayerDeath()
     {
@@ -88,7 +89,7 @@ public class LevelManager : MonoBehaviour
     public void PlayerWin()
     {
         if (GameManager.instance.tmp_data.last_level == level_index) GameManager.instance.AddLevel();
-        int bunus_coin = Random.Range(0, 25);
+        int bunus_coin = UnityEngine.Random.Range(0, 25);
         bonus_coin_t.text =  "+" +bunus_coin.ToString() + " BONUS LEVEL";
         colected_coin_t.text =  "+" +colected_coin;
         GameManager.instance.AddCoin(bunus_coin);
@@ -96,5 +97,17 @@ public class LevelManager : MonoBehaviour
         bg_music.Stop();
         bg_music.pitch = 1;
         bg_music.Play();
+        if (GameManager.instance.tmp_data.last_level == GameManager.instance.current_max_level)
+        {
+            try
+            {
+                Log.instance.ShowLog("Endless mode unlocked, try it !");
+            }
+            catch (Exception ex)
+            {
+                print(ex.Message);
+            }
+            
+        }
     }
 }

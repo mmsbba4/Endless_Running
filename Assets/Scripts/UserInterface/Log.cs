@@ -25,6 +25,15 @@ public class Log : MonoBehaviour
     {
         StartCoroutine(ShowLogg(content));
     }
+    public void ShowLog(string content, float time)
+    {
+        StartCoroutine(ShowLoggtime(content, time));
+    }
+    IEnumerator ShowLoggtime(string content, float time)
+    {
+        yield return new WaitForSeconds(time);
+        StartCoroutine(ShowLogg(content));
+    }
     IEnumerator ShowLogg(string content)
     {
         LogParent.SetActive(true);

@@ -85,7 +85,7 @@ public class CharacterChoising : MonoBehaviour
         }
         else
         {
-            Log.instance.ShowLog("Characters not unlocked !");
+            Log.instance.ShowLog("Characters not unlocked yet!");
         }
     }
 }

@@ -9888,7 +9888,7 @@ MonoBehaviour:
   record: {fileID: 0}
   bg_music: {fileID: 1575217192}
   colected_coin: 0
-  level_index: 0
+  level_index: 3
 --- !u!114 &2075521527
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -18,6 +18,7 @@ public class MainMenu : MonoBehaviour
         UpdateVisible();
         yield return new WaitForSecondsRealtime(1.4f);
         bgSound.Play();
+
     }
     private void OnDestroy()
     {
@@ -38,7 +39,7 @@ public class MainMenu : MonoBehaviour
         }
         else
         {
-            Log.instance.ShowLog("Please complete level 3");
+            Log.instance.ShowLog("Endless mode not unlocked yet !");
         }
     }
     public void SettingPress()

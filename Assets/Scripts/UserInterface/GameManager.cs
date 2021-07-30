@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
             
             LoadData();
             DontDestroyOnLoad(this);
+            Application.targetFrameRate = 60;
         }
         else
         {
@@ -96,6 +97,7 @@ public class GameManager : MonoBehaviour
     {
         General_canvas.instance.ShowLoadCanvas();
         SceneManager.LoadScene("start_scene");
+        //BannerAdExample.instance.HideBannerAd();
     }
     public void EndLessMode()
     {
@@ -114,6 +116,7 @@ public class GameManager : MonoBehaviour
         endless_mode = true;
         General_canvas.instance.ShowLoadCanvas();
         SceneManager.LoadScene("start_scene");
+        //BannerAdExample.instance.HideBannerAd();
     }
 }
 [Serializable]
